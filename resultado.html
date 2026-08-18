@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Próximo Capítulo - Equipe Marlim</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a1f2e;
+            --secondary-color: #1a3a52;
+            --accent-gold: #d4a574;
+            --accent-blue: #3b82f6;
+            --text-light: #f0f4f8;
+            --text-muted: #a0aec0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .resultado-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resultado-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 165, 116, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .resultado-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .resultado-logo {
+            height: 120px;
+            width: auto;
+            margin-bottom: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .resultado-step {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .resultado-step.delay-1 {
+            animation-delay: 0s;
+        }
+
+        .resultado-step.delay-2 {
+            animation-delay: 1.5s;
+        }
+
+        .resultado-step.delay-3 {
+            animation-delay: 3.5s;
+        }
+
+        .resultado-step.delay-4 {
+            animation-delay: 5s;
+        }
+
+        .resultado-step.delay-5 {
+            animation-delay: 6s;
+        }
+
+        .main-text {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            letter-spacing: -1px;
+        }
+
+        .main-text.ainda {
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-text.preparando {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .main-text.aguarde {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+        }
+
+        .equipe-name {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-top: 3rem;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-link:hover {
+            color: var(--text-light);
+            transform: translateX(-5px);
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin: 0 0.3rem;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .back-link {
+                font-size: 0.85rem;
+                top: 1.5rem;
+                left: 1.5rem;
+            }
+
+            .resultado-container {
+                padding: 1.5rem;
+            }
+
+            .resultado-logo {
+                height: 80px;
+                margin-bottom: 2rem;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Voltar</a>
+
+    <div class="resultado-container">
+        <div class="resultado-content">
+            <!-- PRIMEIRO TEXTO -->
+            <div class="resultado-step delay-1">
+                <img src="logo-marlim.png" alt="Equipe Marlim" class="resultado-logo">
+            </div>
+
+            <!-- SEGUNDO TEXTO -->
+            <div class="resultado-step delay-2">
+                <h1 class="main-text ainda">AINDA NÃO.</h1>
+            </div>
+
+            <!-- TERCEIRO TEXTO -->
+            <div class="resultado-step delay-3">
+                <p class="main-text preparando">
+                    ESTAMOS PREPARANDO O PRÓXIMO CAPÍTULO.
+                </p>
+            </div>
+
+            <!-- QUARTO TEXTO -->
+            <div class="resultado-step delay-4">
+                <h2 class="main-text aguarde">AGUARDE<span class="pulse-dot"></span></h2>
+            </div>
+
+            <!-- QUINTO TEXTO -->
+            <div class="resultado-step delay-5">
+                <h3 class="equipe-name">EQUIPE MARLIM</h3>
+                <p class="footer-text">A jornada continua.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
